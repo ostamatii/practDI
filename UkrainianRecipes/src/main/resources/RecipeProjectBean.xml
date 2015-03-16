@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="borshchInstructions" class="my.ostamatii.app.BorshchInstructions">
+	</bean>
+	
+	<bean id="varenykyInstructions" class="my.ostamatii.app.VarenykyInstructions">
+	</bean>
+
+	<bean id="borshchRecipe" class="my.ostamatii.app.BorshchRecipe">
+		<constructor-arg ref="borshchInstructions"/>
+	</bean>
+	
+	<bean id="varenykyRecipe" class="my.ostamatii.app.VarenykyRecipe">
+		<constructor-arg ref="varenykyInstructions"/>
+	</bean>
+	
+	<bean id="recipesBook" class="my.ostamatii.app.RecipesBook">
+		<property name="recipesAll">
+			<map>
+				<entry key="Borshch" value-ref="borshchRecipe"/>
+				<entry key="varenyky" value-ref="varenykyRecipe"/>
+			</map>
+		</property>
+	</bean>
+
+</beans>
